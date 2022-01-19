@@ -1,5 +1,26 @@
 {
   "dependencies": {
     "fs": "^0.0.1-security"
-  }
+  },
+  "name": "wcat",
+  "version": "1.0.0",
+  "main": "script.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "wcat" : "script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saileshgg/wcat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saileshgg/wcat/issues"
+  },
+  "homepage": "https://github.com/saileshgg/wcat#readme",
+  "description": ""
 }
