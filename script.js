@@ -10,7 +10,10 @@ const fs = require("fs");
 
 //process.argv-------------------------------------------------
 
-let filename = process.argv[2];
+let filename;
 
-let ans = fs.readFileSync(filename,"utf-8");
-console.log(ans);
+for (var i = 2; i < process.argv.length; i++) {
+    filename = process.argv[i];
+    let ans = fs.readFileSync(filename, "utf-8");
+    console.log(ans);
+}
