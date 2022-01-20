@@ -13,18 +13,37 @@ const fs = require("fs");
 let processData = process.argv;
 let filename;
 
-if(processData[2] === "w") {
-    fs.writeFileSync(processData[3],processData[4]);
+if (processData[2] === "w") {
+    fs.writeFileSync(processData[3], processData[4]);
     let ans = fs.readFileSync("abc.txt", "utf-8");
     console.log("This is file after write operation" + "\n" + ans);
-} else if(processData[2] === "a") {
-    let previousData = fs.readFileSync(processData[3],"utf-8");
-    fs.writeFileSync(processData[3],previousData + "\n" + processData[4]);
+} else if (processData[2] === "a") {
+    let previousData = fs.readFileSync(processData[3], "utf-8");
+    fs.writeFileSync(processData[3], previousData + "\n" + processData[4]);
 } else {
+    let ans = "";
     for (var i = 2; i < processData.length; i++) {
-        filename = process.argv[i];
-        let ans = fs.readFileSync(filename, "utf-8");
-         console.log(ans);
-    }
-}
+        if (processData.includes("ne")) {
+            i = i+1;
+            let tempData = fs.readFileSync(processData[i],"utf-8");
+            let lines = tempData.split("\n");
+            if(tempData.includes("\r")) {
+                tempData.split("\r\n");
+            }
+            
+            let finalData = "";
+            for(var i=0;i<lines.length;i++) {
+                if(lines[i] != "") {
+                    finalData += lines[i] + "\n";
+                }
+            }
+            ans += finalData;
+        } else {
+            
+            ans = fs.readFileSync(processData[i], "utf-8");
 
+        }
+
+    }
+    console.log(ans);
+}
