@@ -22,9 +22,14 @@ if (processData[2] === "w") {
     fs.writeFileSync(processData[3], previousData + "\n" + processData[4]);
 } else {
     let ans = "";
+    let iUpdate = false;
     for (var i = 2; i < processData.length; i++) {
         if (processData.includes("ne")) {
-            i = i+1;
+            if(!iUpdate) {
+                i = i+1;
+                iUpdate = true;
+            }
+            
             let tempData = fs.readFileSync(processData[i],"utf-8");
             let lines = tempData.split("\n");
             if(tempData.includes("\r")) {
@@ -40,7 +45,7 @@ if (processData[2] === "w") {
             ans += finalData;
         } else {
             
-            ans = fs.readFileSync(processData[i], "utf-8");
+            ans += "\n" + fs.readFileSync(processData[i], "utf-8");
 
         }
 
